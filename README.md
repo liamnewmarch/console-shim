@@ -1,7 +1,7 @@
 `console()` shim
 ============
 
-Some browsers require their developer tools to be open before `console.log()` is available (particularly IE9). This is a shim to that:
+Some browsers require their developer tools to be open before `console.log()` is available (particularly IE9). This is a (tiny!) shim that:
 
 * Allows developers to use `console.log`, `console.error`, `console.warn` and `console.info` as normal
 * Stores all log data in a buffer
