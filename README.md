@@ -3,7 +3,7 @@
 
 Some browsers require their developer tools to be open before `console.log()` is available (particularly IE9). This is a shim to that:
 
-* Allows developers to use `console.log`, 'console.error`, `console.warn` and `console.info` as normal
+* Allows developers to use `console.log`, `console.error`, `console.warn` and `console.info` as normal
 * Stores all log data in a buffer
 * Checks every 1000ms for the existance of the native developer tools and outputs the buffer
 
