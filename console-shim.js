@@ -1,20 +1,26 @@
-if (!window.console) (function() {
+if (!('console' in window)) (function() {
 
-	var __console, Console;
+	var __console, Console, log;
 
 	Console = function() {
 		var check = setInterval(function() {
-			var f;
+			var func, i;
 			if (window.console && console.log && !console.__buffer) {
 				clearInterval(check);
-				f = (Function.prototype.bind) ? Function.prototype.bind.call(console.log, console) : console.log;
-				for (var i = 0; i < __console.__buffer.length; i++) f.apply(console, __console.__buffer[i]);
+				if (Function.prototype.bind) {
+					Function.prototype.bind.call(console.log, console);
+				} else {
+					func = console.log;
+				}
+				for (i = 0; i < __console.__buffer.length; i++) {
+					func.apply(console, __console.__buffer[i]);
+				}
 			}
 		}, 1000);
 
-		function log() {
+		log = function() {
 			this.__buffer.push(arguments);
-		}
+		};
 
 		this.log = log;
 		this.error = log;
@@ -24,4 +30,4 @@ if (!window.console) (function() {
 	};
 
 	__console = window.console = new Console();
-})();
+}());
