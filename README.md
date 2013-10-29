@@ -9,4 +9,8 @@ Some browsers require their developer tools to be open before `console.log()` is
 
 ### Help me debug ###
 
-I've only used this script on IE9 - can you help me test IE10? Let me know if this shim is needed, and whether it works.
+I've only used this script on IE9 - can you help me test IE10 and IE11? Create an issue or fire a tweet at <a href="https://twitter.com/liamnewmarch">@liamnewmarch</a>.
+
+### Licensing ###
+
+This code is distributed under a <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a> license.

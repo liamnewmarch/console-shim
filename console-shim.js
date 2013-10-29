@@ -1,3 +1,4 @@
+/* https://github.com/liamnewmarch/console-shim 2013 CC-BY @liamnewmarch */
 if (!('console' in window)) (function() {
 
 	var __console, Console, log;
