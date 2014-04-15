@@ -1,16 +1,15 @@
-/* https://github.com/liamnewmarch/console-shim 2014 CC-BY @liamnewmarch
-*/
-
+/* https://github.com/liamnewmarch/console-shim 2014 CC-BY @liamnewmarch */
 if (!('console' in window)) {
   (function() {
     var Console, __console;
     Console = function() {
-      var check, key, log, _i, _len, _ref;
+      var check, key, log, methods, _i, _len, _ref;
       this.__buffer = [];
       log = function() {
         return this.__buffer.push(arguments);
       };
-      _ref = 'log error warn info'.split();
+      methods = 'assert count debug dir dirxml error exception info log trace warn';
+      _ref = methods.split();
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         key = _ref[_i];
         this[key] = log;

@@ -11,8 +11,11 @@ unless 'console' of window then do ->
 		# log() adds messages to __buffer
 		log = -> @__buffer.push arguments
 
+		# each `console.XYZ` that we want to map
+		methods = 'assert count debug dir dirxml error exception info log trace warn'
+
 		# add public methods to console for log, error, warn and info
-		@[key] = log for key in 'log error warn info'.split()
+		@[key] = log for key in methods.split()
 
 		# Check every second to check if the real console exists
 		check = setInterval ->
