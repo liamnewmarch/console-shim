@@ -2,7 +2,7 @@
 
 # If the console exists, don't shim it
 unless 'console' of window then do ->
-	
+
 	Console = ->
 
 		# __buffer holds log messages
@@ -15,14 +15,14 @@ unless 'console' of window then do ->
 		methods = 'assert count debug dir dirxml error exception info log trace warn'
 
 		# add public methods to console for log, error, warn and info
-		@[key] = log for key in methods.split()
+		@[key] = log for key in methods.split ' '
 
 		# Check every second to check if the real console exists
 		check = setInterval ->
 
 			# console.__buffer won't exist on the real console
 			if window.console?.log? and not console.__buffer
-				
+
 				# Stop checking
 				clearInterval check
 
@@ -31,7 +31,7 @@ unless 'console' of window then do ->
 					Function::bind.call console.log, console
 				else
 					console.log
-				
+
 				# Output everything in __buffer to the console
 				for data in __console.__buffer
 					func.apply console, data
