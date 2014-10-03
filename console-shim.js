@@ -9,7 +9,7 @@ if (!('console' in window)) {
         return this.__buffer.push(arguments);
       };
       methods = 'assert count debug dir dirxml error exception info log trace warn';
-      _ref = methods.split(" ");
+      _ref = methods.split(' ');
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         key = _ref[_i];
         this[key] = log;
