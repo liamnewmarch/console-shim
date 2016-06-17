@@ -1,15 +1,23 @@
-`console()` shim
+Console shim
 ============
 
-Some browsers require their Developer Tools to be open before `console.log()` is available ([particularly IE9](http://stackoverflow.com/questions/8095348/website-with-js-doesnt-work-in-ie9-until-the-developer-tools-is-activated/9227381#9227381)). This is a (tiny!) shim that:
+Some browsers require the developer tools to be open before `window.console` is available.
 
-* Allows developers to use `console.log`, `console.error`, `console.warn` and many others as normal
-* Stores all log data in a buffer
-* Checks every 1000ms for the existance of the native developer tools and outputs the buffer
+This is a tiny shim, written in ES6, that provides a dummy `console` object to the global scope.
 
-### Help me debug ###
+It saves all calls to `console.log`, `console.error` and other standard methods in a buffer. Once the real `window.console` exists it forwards everything that’s been saved.
 
-This issue seems to particularly affect IE9. Do you know of another browser that behaves the same? Create an issue or fire a tweet at <a href="https://twitter.com/liamnewmarch">@liamnewmarch</a>.
+
+### Development
+
+If you plan to work on this console shim you will need Node and npm installed.
+
+To install dependencies and build, run:
+
+```
+$ npm start
+```
+
 
 ### Licensing ###
 
