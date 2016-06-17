@@ -13,7 +13,7 @@ const methodsToShim = [
   'log',
   'table',
   'trace',
-  'warn'
+  'warn',
 ];
 
 
@@ -25,7 +25,7 @@ const methodsToIgnore = [
   'groupEnd',
   'profile',
   'profileEnd',
-  'timeStamp'
+  'timeStamp',
 ];
 
 
@@ -93,4 +93,4 @@ class ConsoleShim {
 /**
 * ConsoleShim instance.
 */
-window.console = new ConsoleShim();
+export default new ConsoleShim();
