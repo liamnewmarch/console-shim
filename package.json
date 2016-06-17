@@ -1,0 +1,26 @@
+{
+  "name": "console-shim",
+  "version": "1.0.0",
+  "description": "A shim for browsers that don’t support Console",
+  "main": "console-shim.es6.js",
+  "scripts": {
+    "start": "npm run build",
+    "prebuild": "npm install",
+    "build": "rollup -cm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liamnewmarch/console-shim.git"
+  },
+  "author": "liamnewmarch",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/liamnewmarch/console-shim/issues"
+  },
+  "homepage": "https://github.com/liamnewmarch/console-shim#readme",
+  "devDependencies": {
+    "rollup": "^0.31.2",
+    "rollup-plugin-buble": "^0.11.0",
+    "rollup-plugin-uglify": "^1.0.0"
+  }
+}
