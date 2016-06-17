@@ -1,6 +1,9 @@
 // https://github.com/liamnewmarch/console-shim 2014 CC-BY @liamnewmarch
 
-
+/**
+ * Methods we want to (try to) map onto the native window.console. Methods that
+ * don’t exist will get passed to console.log.
+ */
 const methodsToShim = [
   'assert',
   'count',
@@ -9,6 +12,9 @@ const methodsToShim = [
   'dirxml',
   'error',
   'exception',
+  'group',
+  'groupCollapsed',
+  'groupEnd',
   'info',
   'log',
   'table',
@@ -17,12 +23,12 @@ const methodsToShim = [
 ];
 
 
+/**
+ * Methods we can’t replicate and are handled by a no-op function.
+ */
 const methodsToIgnore = [
   'clear',
   'count',
-  'group',
-  'groupCollapsed',
-  'groupEnd',
   'profile',
   'profileEnd',
   'timeStamp',
@@ -30,11 +36,13 @@ const methodsToIgnore = [
 
 
 /**
-* ConsoleShim class.
+* The console shim class.
 */
 class ConsoleShim {
 
   /**
+   * Initialise the buffer, setup methods and watch for console.
+   *
    * @constructor
    */
   constructor() {
@@ -44,7 +52,9 @@ class ConsoleShim {
   }
 
   /**
-   * @param {...*} args Value to buffer.
+   * Add a method to mirror window.console.
+   *
+   * @param {string} key Name of the console method.
    * @private
    */
   __addMethod(key) {
@@ -52,8 +62,11 @@ class ConsoleShim {
   }
 
   /**
+   * Call a method on the native window.console.
+   *
    * @param {string} method Method to call.
    * @param {array} args Args to pass to method.
+   * @private
    */
   __callNativeMethod(method, args) {
     method = method in window.console || 'log';
@@ -61,6 +74,8 @@ class ConsoleShim {
   }
 
   /**
+   * Iterate method keys, and shim or ignore as appropriate.
+   *
    * @private
    */
   __mapMethods() {
@@ -70,6 +85,9 @@ class ConsoleShim {
   }
 
   /**
+   * Watch for the native window.console. If it’s not available wait a second
+   * and try again.
+   *
    * @private
    */
   __watchForConsole() {
@@ -78,7 +96,7 @@ class ConsoleShim {
     }
 
     if ('check' in this) {
-      clearTimeout(check);
+      clearTimeout(this.check);
     }
 
     this.__buffer.forEach(args => {
@@ -91,6 +109,6 @@ class ConsoleShim {
 
 
 /**
-* ConsoleShim instance.
+* Expose our console shim instance.
 */
 export default new ConsoleShim();
